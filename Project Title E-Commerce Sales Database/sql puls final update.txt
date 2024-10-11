@@ -1,0 +1,310 @@
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Oct 2 14:43:56 2024
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+Enter user-name: hr
+Enter password:
+Last Successful login time: Wed Oct 02 2024 12:50:13 +05:30
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> @$ORACLE_HOME/rdbms/admin/utlxplan.sql
+
+Table created.
+
+SQL> EXPLAIN PLAN FOR
+  2  SELECT * FROM Orders WHERE customer_id = 1;
+
+Explained.
+
+SQL> EXPLAIN PLAN FOR
+  2  SELECT * FROM Orders WHERE customer_id = 1;
+
+Explained.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> -- Step 1: Generate Execution Plan
+SQL> EXPLAIN PLAN FOR
+  2  SELECT * FROM Orders WHERE customer_id = 1;
+
+Explained.
+
+SQL>
+SQL> -- Step 2: Display Execution Plan
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM Orders WHERE customer_id = 1;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT
+---------- ----------- ---------
+      1001           1 01-OCT-24
+
+SQL>
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(NULL, 'test_plan'));
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Error: cannot fetch plan for statement_id 'test_plan'
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(NULL, 'test_plan'));
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Error: cannot fetch plan for statement_id 'test_plan'
+
+SQL> SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY);
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 1275100350
+
+----------------------------------------------------------------------------
+| Id  | Operation         | Name   | Rows  | Bytes | Cost (%CPU)| Time     |
+----------------------------------------------------------------------------
+|   0 | SELECT STATEMENT  |        |     1 |    35 |     3   (0)| 00:00:01 |
+|*  1 |  TABLE ACCESS FULL| ORDERS |     1 |    35 |     3   (0)| 00:00:01 |
+----------------------------------------------------------------------------
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - filter("CUSTOMER_ID"=1)
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+17 rows selected.
+
+SQL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
